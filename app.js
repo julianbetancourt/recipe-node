@@ -49,30 +49,21 @@ app.get('/', async (req, res) => {
   res.render('index', {
     recipes,
   })
-
 })
 
-app.post('/add-recipe', (req, res) => {
-  const { name, serves, ingredients, instructions } = req.body
-  const newRecipe = {
-    name,
-    serves,
-    ingredients,
-    instructions,
-  }
-
-  new Recipe(newRecipe).save()
-    .then(recipe => {
-      console.log('new recipe created: ' + recipe)
-    })
-
-
+app.get('/add-recipe', async (req, res) => {
+  res.render('add-recipe')
 })
 
-app.get('/recipes', (req, res) => {
-  Recipe.find()
-    .then(recipes => res.send(recipes))
+app.post('/add-recipe', async (req, res) => {
+  const recipe = Object.assign({}, req.body, {
+    ingredients: req.body.ingredients.split(',')
+  })
+
+  await (new Recipe(recipe)).save()
+  res.redirect('/')
 })
+
 
 
 module.exports = app

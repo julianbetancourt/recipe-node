@@ -1,0 +1,26 @@
+extends layout
+
+
+//-  this is suuuuuuuper nasty but ¯\_(ツ)_/¯
+block content
+  form(action="/add-recipe" method="POST")
+    label(for="name") Name
+    br
+    input(type="text" name="name")
+    br
+    br
+    label(for="serves") Serves:
+    br
+    input(type="text" name="serves" placeholder="Type a number")
+    br
+    br
+    label(for="ingredients") Ingredients
+    br
+    input(type="text" name="ingredients" placeholder="Type, ingredients, separated, by, commas")
+    br
+    br
+    label(for="instructions") Instructions
+    br
+    textarea(name="instructions")
+    br
+    input(type="submit" value="Save" class="button")
