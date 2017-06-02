@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  .recipe-details
+    each recipe in recipes  
+      .recipe-details__header
+        span= recipe.name
+      .recipe-details__content
+        .recipe-details__item
+          h3 Serves: 
+          span= recipe.serves
+        .recipe-details__item
+          h3 Ingredients: 
+          .ingredient-list
+            each ingredient in recipe.ingredients
+              span.ingredient-list__ingredient= ingredient
+              br
+        .recipe-details__item
+          h3 Instructions: 
+          p.recipe-details__instructions= recipe.instructions          
+      hr
+
+//- block content
+//-   p= recipes
