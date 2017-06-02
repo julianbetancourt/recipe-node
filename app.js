@@ -64,6 +64,13 @@ app.post('/add-recipe', async (req, res) => {
   res.redirect('/')
 })
 
+app.post('/delete-recipe/:id', async (req, res) => {
+  // TODO: if !id => "doesn't exist"
+  const id = req.params.id
+  await Recipe.findByIdAndRemove(id).exec()
+  res.redirect('/')
+})
+
 
 
 module.exports = app

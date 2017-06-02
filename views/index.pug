@@ -18,7 +18,9 @@ block content
               br
         .recipe-details__item
           h3 Instructions: 
-          p.recipe-details__instructions= recipe.instructions          
+          p.recipe-details__instructions= recipe.instructions
+        form(action=`delete-recipe/${recipe.id}` method="POST")
+          button(type="submit") Delete
       hr
 
 //- block content
